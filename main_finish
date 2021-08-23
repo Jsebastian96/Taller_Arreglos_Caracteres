@@ -1,0 +1,298 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    int opcion;
+    int numCaracteresIzq, numCaracteresDer;
+    string cadena;
+    string letra;
+    string cadenaFinal;
+    char vacio = ' ';
+    char borrar;
+    string borrada = "";
+    string comparar = "";
+    string interseccion = "";
+    string cadena1= "";
+    string cadenaEncriptada= "";
+
+    cout<<"Ingrese una frase o cadena de texto: ";
+    //cin>>cadena;
+    getline(cin, cadena, '\n');
+    fflush(stdin);
+    cout<<"1.Desea convertir la cadena a nombre propio: "<<
+	"\n 2. Desea contar el n�mero de veces que existe una palabra en una cadena: "<<
+	"\n 3. Desea encriptar la cadena de texto: "<<
+    "\n 5. Desea rellenar por izquierda: "<<
+   	"\n 6. Desea rellenar por derecha: "<<
+    "\n 7. Desea borrar caracteres de una cadena"<<
+    "\n 8. Desea interseccionar dos cadenas  \n";
+    cin>>opcion;
+
+    switch (opcion) {
+        case 1:
+        	cadena = (CultureInfo.InvariantCulture.TextInfo.ToTitleCase(cadena1));
+			cout<<cadena1<<endl;
+            break;
+        case 2:
+			cout<<"Ingrese una palabra "<<endl;
+			cin>>palabra;
+			strcpy(cadena,palabra.c_str());
+ 
+			for(int i=0; i<palabra.length(); i++){
+				if(cadena[i] == caracter){
+					contador++;
+		}
+	}
+				cout<<"El numero de veces que se repite la palabra"<<palabra<<"es: "<<contador;
+			 
+				delete cadena;
+				cout<<endl;
+				system("PAUSE");
+				return 0;
+            break;
+        case 3:
+				for (int i = 0; i < cadena.length(); ++i) {
+                cadenaEncriptada += (char) (cadena[i]+10);
+			
+            }
+            	cout<<cadenaEncriptada<<endl;
+            	return 0;
+            
+            break;
+        case 4:
+
+            break;
+        case 5:
+            cout<<"Ingrese el numero de veces que aparecera el caracter por izquierda: ";
+            cin>>numCaracteresIzq;
+
+            cout<<"Ingrese el caracter: ";
+            cin>>letra;
+            //cin.getline(llenarIzq, numCaracteresIzq, '\n');
+
+            for (int i = 0; i < numCaracteresIzq; ++i) {
+                cadenaFinal += letra;
+
+            }
+
+            cadenaFinal += cadena;
+            cout<<cadenaFinal<<endl;
+
+            break;
+        case 6:
+            cout<<"Ingrese el numero de veces que aparecera el caracter por derecha: ";
+            cin>>numCaracteresDer;
+
+            cout<<"Ingrese el caracter: ";
+            cin>>letra;
+            //cin.getline(llenarDer, numCaracteresDer, '\n');
+
+            for (int i = 0; i < numCaracteresDer; ++i) {
+                if (i == 0){
+                    cadenaFinal += cadena;
+                }
+                cadenaFinal += letra;
+            }
+            //cadena += cadenaFinal;
+            cout<<cadenaFinal<<endl;
+
+            break;
+
+        case 7:
+
+
+            cout<<"Ingrese la letra que desea borrar: "<<endl;
+            cin>>borrar;
+
+            for (int i = 0; i < cadena.length(); ++i) {
+
+                if (cadena[i] == borrar){
+                    cadena[i] = vacio;
+                }else{
+                    borrada += cadena[i];
+                }
+            }
+
+            cout<<borrada<<"\n";
+            //cout<<cadena;
+
+            break;
+
+        case 8:
+
+            cout<<"Ingrese la palabra a comparar";
+            fflush(stdin);
+            //cin>>comparar;
+            getline(cin, comparar, '\n');
+
+            for (int i = 0; i < comparar.length(); ++i) {
+                int band = 1;
+                for (int j = 0; j < cadena.length(); ++j) {
+                    if (comparar[i] == cadena[j]){
+                        band++;
+                    }
+                }
+                cout<<"\n band "<<band;
+                if (band != 1){
+                    int band2 = 1;
+                    for (int j = 0; j < interseccion.length(); ++j) {
+                        if (comparar[i] == interseccion[j]){
+                            band2++;
+                        }
+                        cout<<"FUNCIONA!";
+                    }
+                    cout<<"\n band2 "<<band2;
+                    if (band2 == 1){
+                        interseccion += comparar[i];
+                    }
+                }
+            }
+
+            cout<<"\n Interseccion "<<interseccion<<endl;
+            break;
+
+      	  case 9:
+		diferenciaEntreDosCadenas();
+            
+            break;
+ 	 case 10:
+		borrarPorIzODer();
+            
+            break;
+	 case 10:
+		bool correoValido(string email)
+		break;
+       default:
+            cout<<"Opcion ingresada **INCORRECTA**";
+
+    }
+
+    getch();
+    return 0;
+}
+
+void diferenciaEntreDosCadenas(){
+	string cadena1, cadena2;
+	cout<<"Ingrese la cadena 1"<<endl;
+	cin >> cadena1;
+	cout<<"Ingrese la cadena 2"<<endl;
+	cin >> cadena2;
+	
+	
+	//mayusculas a minusculas
+	for(int i=0; i<cadena1.length(); i++){
+		if (cadena1[i] >= 'A' && cadena1[i] <= 'Z'){
+			cadena1[i] = (char)(cadena1[i] + ('a' - 'A'));
+		}
+	}
+	for(int i=0; i<cadena2.length(); i++){
+		if (cadena2[i] >= 'A' && cadena2[i] <= 'Z'){
+			cadena2[i] = (char)(cadena2[i] + ('a' - 'A'));
+		}
+	}
+	
+	//caracteres repetidos los convierte en *
+	for(int i=0; i<cadena1.length(); i++){
+		for(int j=0; j<cadena2.length(); j++){
+			if(cadena2[j] == cadena1[i]){
+				if(cadena2[j] != ' '){
+					cadena1[i] = '*';
+				}
+			}
+		}
+	}
+	
+	//despalza al * hacia el final de  la palabra para asi dejar todas las letras juntas
+	for(int k=0; k<cadena1.length()-1;k++){
+		for(int h=0; h<cadena1.length()-1;h++){
+			if(cadena1[h] == '*'){
+				cadena1[h] = cadena1[h+1];
+				cadena1[h+1] = '*';
+			}
+		}
+	}
+	
+	//elimina los *
+	for(int i=0; i<cadena1.length();i++){
+		if(cadena1[i] =='*'){
+			cadena1[i] = ' ';
+		}
+	}
+	
+	cout<< cadena1 <<endl;
+	
+}
+
+bool existe(string cadena, char letra){
+	
+	for(int i = 0; i < cadena.length(); i++){
+		if(letra == cadena[i]){
+			return true;
+		}
+	}
+	return false;
+}
+
+void borrarPorIzODer(){
+	int i = 0;
+	string cadena1, cadena2;
+	cout<<"Ingrese la cadena 1"<<endl;
+	getline(cin,cadena1);
+	cout<<"Ingrese la cadena 2"<<endl;
+	getline(cin,cadena2);
+	int opcion = 0;
+	cout<<"digite: \n 1. para borrar por izquierda\n 2. para borrar por derecha"<<endl;
+	cin>>opcion;
+	
+	//mayusculas a minusculas
+	for(int i=0; i<cadena1.length(); i++){
+		if (cadena1[i] >= 'A' && cadena1[i] <= 'Z'){
+			cadena1[i] = (char)(cadena1[i] + ('a' - 'A'));
+		}
+	}
+	for(int i=0; i<cadena2.length(); i++){
+		if (cadena2[i] >= 'A' && cadena2[i] <= 'Z'){
+			cadena2[i] = (char)(cadena2[i] + ('a' - 'A'));
+		}
+	}
+	
+	//punto de partida de la cadena
+	if(opcion == 1){
+		i = 0;
+	}else if(opcion == 2){
+		i = cadena1.length()-1;
+	}
+	
+	//borrando caracteres siempre y cuadn oexistan
+	while(existe(cadena2,cadena1[i])){
+		if(opcion == 1){
+			cadena1[i] = '*';
+			i++;
+		}else if(opcion == 2){
+			cadena1[i] = NULL;
+			i--;
+		}
+	}
+	
+	//quitando los *
+	while(cadena1[0] == '*'){
+		for (int j = 0; j < cadena1.length(); j++) {
+			cadena1[j] = cadena1[j+1];
+		}
+	}
+	
+	cout<<cadena1<<endl;
+}
+/*
+solo funiona si se una C++ 2011 o superior
+bool correoValido(string email)
+{
+   // define caracteres validos
+   const td::regex pattern      ("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+
+   // try to match the string with the regular expression
+   return std::regex_match(email, pattern);
+}*/
